@@ -38,7 +38,7 @@ table.gantt td:first-child{text-align:left;padding-left:8px;white-space:nowrap;f
 .table-card .info p{font-size:0.8rem;color:#777}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
 .gallery-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);transition:transform 0.2s}
-.gallery-card img{width:100%;height:200px;object-fit:cover}
+.gallery-card img{width:100%;height:auto;object-fit:contain}
 .gallery-card .caption{padding:12px}
 .gallery-card .caption h3{font-size:0.95rem;color:#2d1b0e;margin-bottom:4px}
 .gallery-card .caption p{font-size:0.8rem;color:#888}
@@ -97,7 +97,7 @@ table.gantt td:first-child{text-align:left;padding-left:8px;white-space:nowrap;f
   .gantt-container{display:none}
   .gantt-timeline{display:block}
   .gallery{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
-  .gallery-card img{height:140px}
+  .gallery-card img{height:auto}
   .table-card{padding:12px;gap:10px}
   .table-card img{width:60px;height:60px}
   .calendar{grid-template-columns:1fr}
@@ -117,7 +117,7 @@ table.gantt td:first-child{text-align:left;padding-left:8px;white-space:nowrap;f
   .toolbar{gap:4px;padding:8px 4px}
   .toolbar button{padding:8px 10px;font-size:0.72rem;min-height:38px}
   .gallery{grid-template-columns:1fr 1fr}
-  .gallery-card img{height:120px}
+  .gallery-card img{height:auto}
   .table-card{flex-direction:column;align-items:flex-start}
   .table-card img{width:100%;height:160px;border-radius:8px}
 }
