@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>フェア・アニュアルプラン 2026</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="フェア2026">
+<meta name="theme-color" content="#2d1b0e">
+<link rel="icon" id="favicon" type="image/png" href="data:,">
+<link rel="apple-touch-icon" id="apple-icon" href="data:,">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN',sans-serif;background:#f5f0eb;color:#333;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
@@ -133,7 +139,51 @@ var months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10
 var catLabel = {fruit:'フルーツ',seasonal:'季節',ingredient:'素材'};
 var catColor = {fruit:'#e74c3c',seasonal:'#27ae60',ingredient:'#f39c12'};
 
+function generateIcon(){
+  var s=180;
+  var c=document.createElement('canvas');
+  c.width=s;c.height=s;
+  var x=c.getContext('2d');
+  /* Background gradient */
+  var g=x.createLinearGradient(0,0,s,s);
+  g.addColorStop(0,'#2d1b0e');g.addColorStop(1,'#5c3a1e');
+  x.fillStyle=g;
+  x.beginPath();x.roundRect(0,0,s,s,28);x.fill();
+  /* Decorative circles */
+  x.globalAlpha=0.08;
+  x.fillStyle='#fff';
+  x.beginPath();x.arc(140,30,50,0,Math.PI*2);x.fill();
+  x.beginPath();x.arc(30,150,40,0,Math.PI*2);x.fill();
+  x.globalAlpha=1;
+  /* Category dots */
+  var dots=[{c:'#e74c3c',y:52},{c:'#27ae60',y:72},{c:'#f39c12',y:92}];
+  dots.forEach(function(d){
+    x.fillStyle=d.c;
+    x.beginPath();x.arc(30,d.y,6,0,Math.PI*2);x.fill();
+    x.fillStyle='rgba(255,255,255,0.3)';
+    x.fillRect(44,d.y-3,100,6);
+    x.fillStyle=d.c;
+    x.fillRect(44,d.y-3,Math.random()*60+30,6);
+  });
+  /* "Fair" text */
+  x.fillStyle='#fff';
+  x.font='bold 32px "Helvetica Neue",Arial,sans-serif';
+  x.textAlign='center';
+  x.fillText('FAIR',s/2,140);
+  /* "2026" text */
+  x.font='bold 22px "Helvetica Neue",Arial,sans-serif';
+  x.fillStyle='rgba(255,255,255,0.7)';
+  x.fillText('2026',s/2,166);
+  /* Set icons */
+  var url=c.toDataURL('image/png');
+  var fi=document.getElementById('favicon');
+  var ai=document.getElementById('apple-icon');
+  if(fi)fi.href=url;
+  if(ai)ai.href=url;
+}
+
 function init(){
+  generateIcon();
   renderSummary();
   renderToolbar();
   render();
